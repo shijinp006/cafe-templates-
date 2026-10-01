@@ -29,7 +29,7 @@ function CartIcon() {
 function CountBadge({ count }) {
   if (!count) return null;
   return (
-    <span className="absolute -top-1.5 -right-1.5 min-w-[16px] h-[16px] px-1 rounded-full bg-[#F4A261] text-[#2B2D42] text-[9px] font-bold flex items-center justify-center">
+    <span key={count} className="badge-pop absolute -top-1.5 -right-1.5 min-w-[16px] h-[16px] px-1 rounded-full bg-[#F4A261] text-[#2B2D42] text-[9px] font-bold flex items-center justify-center">
       {count > 9 ? "9+" : count}
     </span>
   );
@@ -105,6 +105,7 @@ function Navbar({ onNavigateSection, onNavigateWishlist, onNavigateOrder }) {
             type="button"
             onClick={handleWishlist}
             aria-label="View wishlist"
+            data-fly-target="wishlist"
             style={{ animationDelay: "0.7s" }}
             className={`nav-item relative w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center rounded-full hover:bg-black/10 transition-all cursor-pointer ${overHero ? "text-[#FFFDF9]/90" : "text-[#2B2D42]/90"}`}
           >
@@ -117,6 +118,7 @@ function Navbar({ onNavigateSection, onNavigateWishlist, onNavigateOrder }) {
             type="button"
             onClick={handleOrder}
             aria-label="View order"
+            data-fly-target="order"
             style={{ animationDelay: "0.8s" }}
             className={`nav-item relative w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center rounded-full hover:bg-black/10 transition-all cursor-pointer ${overHero ? "text-[#FFFDF9]/90" : "text-[#2B2D42]/90"}`}
           >

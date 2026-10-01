@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useCart } from "../lib/CartContext";
+import { flyToCart } from "../lib/fly";
+import { getMenuItemById } from "../data/menuItems";
 
 function HeartIcon({ filled }) {
   return (
@@ -35,9 +37,16 @@ function CartIcon() {
   );
 }
 
+const SPARKS = Array.from({ length: 7 }, (_, i) => {
+  const a = (i / 7) * Math.PI * 2;
+  return { x: Math.cos(a) * 20, y: Math.sin(a) * 20 };
+});
+
 function CardActions({ itemId, className = "" }) {
   const cart = useCart();
   const [justAdded, setJustAdded] = useState(false);
+  const [heartAnim, setHeartAnim] = useState(0);
+  const [orderAnim, setOrderAnim] = useState(0);
 
   if (!cart) return null;
   const { isWishlisted, toggleWishlist, addToOrder } = cart;
@@ -45,12 +54,18 @@ function CardActions({ itemId, className = "" }) {
 
   const handleWishlist = (e) => {
     e.stopPropagation();
+    if (!wishlisted) {
+      setHeartAnim((n) => n + 1);
+      flyToCart(e.currentTarget, "wishlist");
+    }
     toggleWishlist(itemId);
   };
 
   const handleAddOrder = (e) => {
     e.stopPropagation();
     addToOrder(itemId, 1);
+    flyToCart(e.currentTarget, "order", getMenuItemById(itemId)?.image);
+    setOrderAnim((n) => n + 1);
     setJustAdded(true);
     window.setTimeout(() => setJustAdded(false), 900);
   };
@@ -64,13 +79,28 @@ function CardActions({ itemId, className = "" }) {
         onClick={handleWishlist}
         aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
         aria-pressed={wishlisted}
-        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center backdrop-blur-md border transition-all duration-300 cursor-pointer active:scale-90 ${
+        className={`relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center backdrop-blur-md border transition-all duration-300 cursor-pointer active:scale-90 ${
           wishlisted
             ? "bg-[#F4A261] border-[#F4A261] text-[#2B2D42] scale-105 shadow-sm"
             : "bg-black/50 border-white/30 text-[#FFFDF9] hover:border-[#F8B583] hover:text-[#F8B583]"
         }`}
       >
-        <span className="w-4 h-4 sm:w-4 sm:h-4">
+        {heartAnim > 0 && wishlisted && (
+          <span key={`h${heartAnim}`} aria-hidden="true" className="pointer-events-none absolute inset-0">
+            <span className="anim-ring absolute inset-0 rounded-full border-2 border-[#F4A261]" />
+            {SPARKS.map((p, i) => (
+              <span
+                key={i}
+                className="anim-spark absolute left-1/2 top-1/2 -ml-[3px] -mt-[3px] w-[6px] h-[6px] rounded-full bg-[#F4A261]"
+                style={{ "--x": `${p.x}px`, "--y": `${p.y}px` }}
+              />
+            ))}
+          </span>
+        )}
+        <span
+          key={`hi${wishlisted ? heartAnim : 0}`}
+          className={`w-4 h-4 sm:w-4 sm:h-4 ${wishlisted && heartAnim > 0 ? "anim-heart-pop" : ""}`}
+        >
           <HeartIcon filled={wishlisted} />
         </span>
       </button>
@@ -78,13 +108,24 @@ function CardActions({ itemId, className = "" }) {
         type="button"
         onClick={handleAddOrder}
         aria-label="Add to order"
-        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center backdrop-blur-md border transition-all duration-300 cursor-pointer active:scale-90 ${
+        className={`relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center backdrop-blur-md border transition-all duration-300 cursor-pointer active:scale-90 ${
           justAdded
             ? "bg-[#F4A261] border-[#F4A261] text-[#2B2D42] scale-110 shadow-sm"
             : "bg-black/50 border-white/30 text-[#FFFDF9] hover:border-[#F8B583] hover:text-[#F8B583]"
         }`}
       >
-        <span className="w-4 h-4 sm:w-4 sm:h-4">
+        {orderAnim > 0 && justAdded && (
+          <span key={`o${orderAnim}`} aria-hidden="true" className="pointer-events-none absolute inset-0">
+            <span className="anim-ring absolute inset-0 rounded-full border-2 border-[#F4A261]" />
+            <span className="anim-plus absolute -top-1 left-1/2 -translate-x-1/2 text-[11px] font-bold text-[#F4A261] drop-shadow">
+              +1
+            </span>
+          </span>
+        )}
+        <span
+          key={`oi${orderAnim}`}
+          className={`w-4 h-4 sm:w-4 sm:h-4 ${justAdded ? "anim-cart-bounce" : ""}`}
+        >
           <CartIcon />
         </span>
       </button>

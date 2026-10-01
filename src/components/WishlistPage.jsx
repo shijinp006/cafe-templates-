@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useCart } from "../lib/CartContext";
+import { flyToCart } from "../lib/fly";
 import { getMenuItemById } from "../data/menuItems";
 
 function HeartFilledIcon() {
@@ -56,8 +57,10 @@ function WishlistPage({ onBack, onNavigateMenu }) {
     });
   };
 
-  const handleAddToOrder = (id) => {
+  const handleAddToOrder = (id, el) => {
     cart.addToOrder(id, 1);
+    const item = getMenuItemById(id);
+    flyToCart(el, "order", item?.image);
   };
 
   return (
@@ -151,7 +154,7 @@ function WishlistPage({ onBack, onNavigateMenu }) {
                   </p>
                 </div>
                 <button
-                  onClick={() => handleAddToOrder(item.id)}
+                  onClick={(e) => handleAddToOrder(item.id, e.currentTarget)}
                   className="mt-2 sm:mt-3 w-full py-2 sm:py-2.5 rounded-lg border border-[#F4A261]/50 bg-[#F4A261]/10 text-[#E76F51] hover:bg-[#F4A261] hover:text-[#2B2D42] text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all cursor-pointer active:scale-95"
                 >
                   Add to Order

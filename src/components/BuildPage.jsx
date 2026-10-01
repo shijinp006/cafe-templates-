@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { gsap } from "gsap";
 import { useCart } from "../lib/CartContext";
+import { flyToCart } from "../lib/fly";
 import { PRODUCTS } from "../data/buildData";
 import BuildGraphic from "./BuildGraphics";
 import { PREVIEWS } from "./BuildPreviews";
@@ -91,7 +92,8 @@ function BuildPage({ onBack, onViewOrder }) {
     setAdded(false);
   };
 
-  const handleAdd = () => {
+  const handleAdd = (e) => {
+    flyToCart(e.currentTarget, "order");
     const names = chosen.map((o) => o.label).join(", ");
     cart?.addCustomToOrder(
       {

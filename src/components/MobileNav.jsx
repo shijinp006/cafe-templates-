@@ -82,6 +82,7 @@ function MobileNav({ onNavigateSection, onNavigateWishlist, onNavigateOrder }) {
           <a
             key={item.id}
             href={`#${item.id}`}
+            data-fly-target={item.id === "wishlist" || item.id === "order" ? item.id : undefined}
             onClick={handleNav(item.id)}
             className={`relative flex flex-col items-center gap-1 px-3 py-1 transition-all duration-200 active:scale-95 cursor-pointer ${
               isActive ? "text-[#E76F51] font-bold" : "text-[#2B2D42]/60 hover:text-[#2B2D42]"
@@ -90,7 +91,7 @@ function MobileNav({ onNavigateSection, onNavigateWishlist, onNavigateOrder }) {
             <div className="relative">
               {item.icon}
               {!!item.badge && (
-                <span className="absolute -top-1.5 -right-2.5 min-w-[15px] h-[15px] px-1 rounded-full bg-[#F4A261] text-[#2B2D42] text-[9px] font-extrabold flex items-center justify-center leading-none">
+                <span key={item.badge} className="badge-pop absolute -top-1.5 -right-2.5 min-w-[15px] h-[15px] px-1 rounded-full bg-[#F4A261] text-[#2B2D42] text-[9px] font-extrabold flex items-center justify-center leading-none">
                   {item.badge > 9 ? "9+" : item.badge}
                 </span>
               )}
