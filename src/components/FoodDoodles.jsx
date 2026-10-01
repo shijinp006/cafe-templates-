@@ -70,28 +70,28 @@ const ICONS = {
 // Sketches sit in the four corners, partly cropped by the section edge.
 const SETS = {
   products: [
-    { icon: "burger", cls: "-top-2 -left-3 w-14 md:w-20 rotate-[18deg]" },
-    { icon: "fries", cls: "-top-2 -right-3 w-14 md:w-20 -rotate-[18deg]" },
-    { icon: "shake", cls: "-bottom-2 -left-3 w-14 md:w-20 -rotate-[14deg]" },
-    { icon: "pizza", cls: "-bottom-2 -right-3 w-14 md:w-20 rotate-[14deg]" },
+    { icon: "burger", cls: "top-4 md:top-6 left-1 md:left-3 w-10 md:w-16 rotate-[18deg]" },
+    { icon: "fries", cls: "top-4 md:top-6 right-1 md:right-3 w-10 md:w-16 -rotate-[18deg]" },
+    { icon: "shake", cls: "bottom-4 md:bottom-6 left-1 md:left-3 w-10 md:w-16 -rotate-[14deg]" },
+    { icon: "pizza", cls: "bottom-4 md:bottom-6 right-1 md:right-3 w-10 md:w-16 rotate-[14deg]" },
   ],
   about: [
-    { icon: "hotdog", cls: "-top-2 -left-3 w-14 md:w-20 rotate-[18deg]" },
-    { icon: "icecream", cls: "-top-2 -right-3 w-14 md:w-20 -rotate-[18deg]" },
-    { icon: "cup", cls: "-bottom-2 -left-3 w-14 md:w-20 -rotate-[14deg]" },
-    { icon: "donut", cls: "-bottom-2 -right-3 w-14 md:w-20 rotate-[14deg]" },
+    { icon: "hotdog", cls: "top-4 md:top-6 left-1 md:left-3 w-10 md:w-16 rotate-[18deg]" },
+    { icon: "icecream", cls: "top-4 md:top-6 right-1 md:right-3 w-10 md:w-16 -rotate-[18deg]" },
+    { icon: "cup", cls: "bottom-4 md:bottom-6 left-1 md:left-3 w-10 md:w-16 -rotate-[14deg]" },
+    { icon: "donut", cls: "bottom-4 md:bottom-6 right-1 md:right-3 w-10 md:w-16 rotate-[14deg]" },
   ],
   contact: [
-    { icon: "pizza", cls: "-top-2 -left-3 w-14 md:w-20 rotate-[18deg]" },
-    { icon: "burger", cls: "-top-2 -right-3 w-14 md:w-20 -rotate-[18deg]" },
-    { icon: "donut", cls: "-bottom-2 -left-3 w-14 md:w-20 -rotate-[14deg]" },
-    { icon: "shake", cls: "-bottom-2 -right-3 w-14 md:w-20 rotate-[14deg]" },
+    { icon: "pizza", cls: "top-4 md:top-6 left-1 md:left-3 w-10 md:w-16 rotate-[18deg]" },
+    { icon: "burger", cls: "top-4 md:top-6 right-1 md:right-3 w-10 md:w-16 -rotate-[18deg]" },
+    { icon: "donut", cls: "bottom-4 md:bottom-6 left-1 md:left-3 w-10 md:w-16 -rotate-[14deg]" },
+    { icon: "shake", cls: "bottom-4 md:bottom-6 right-1 md:right-3 w-10 md:w-16 rotate-[14deg]" },
   ],
   menu: [
-    { icon: "burger", cls: "top-[80px] -left-3 w-14 md:w-20 rotate-[18deg]" },
-    { icon: "pizza", cls: "top-[80px] -right-3 w-14 md:w-20 -rotate-[18deg]" },
-    { icon: "shake", cls: "-bottom-2 -left-3 w-14 md:w-20 -rotate-[14deg]" },
-    { icon: "fries", cls: "-bottom-2 -right-3 w-14 md:w-20 rotate-[14deg]" },
+    { icon: "burger", cls: "top-[88px] left-1 md:left-3 w-10 md:w-16 rotate-[18deg]" },
+    { icon: "pizza", cls: "top-[88px] right-1 md:right-3 w-10 md:w-16 -rotate-[18deg]" },
+    { icon: "shake", cls: "bottom-4 md:bottom-6 left-1 md:left-3 w-10 md:w-16 -rotate-[14deg]" },
+    { icon: "fries", cls: "bottom-4 md:bottom-6 right-1 md:right-3 w-10 md:w-16 rotate-[14deg]" },
   ],
 };
 

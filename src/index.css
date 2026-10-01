@@ -203,14 +203,14 @@ html::-webkit-scrollbar {
 .doodle-float {
   transform-box: fill-box;
   transform-origin: center;
-  animation: doodle-float 2.4s ease-in-out infinite alternate;
+  animation: doodle-float 4.5s ease-in-out infinite alternate;
   animation-delay: var(--d, 0s);
 }
 
 .doodle-art > * {
   stroke-dasharray: 200;
   stroke-dashoffset: 200;
-  animation: doodle-draw 1.2s ease-out forwards;
+  animation: doodle-draw 2s ease-out forwards;
   animation-delay: var(--d, 0s);
 }
 
