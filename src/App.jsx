@@ -121,7 +121,7 @@ function App() {
         />
         {pageLoading && <PageLoader />}
         {currentView === "menu" ? (
-          <Suspense fallback={PAGE_FALLBACK}>
+          <Suspense fallback={<div className="min-h-screen bg-[#FFFDF9]" />}>
             <MenuPage onBack={navigateToHome} />
           </Suspense>
         ) : currentView === "wishlist" ? (
