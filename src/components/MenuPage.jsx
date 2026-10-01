@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ALL_MENU_ITEMS } from "../data/menuItems";
 import CardActions from "./CardActions";
+import { useLenis } from "../lib/LenisContext";
 import FoodDoodles from "./FoodDoodles";
 
 const ITEMS_PER_PAGE = 8;
@@ -39,6 +40,17 @@ function MenuPage({ onBack }) {
   const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentItems = filteredItems.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  const lenis = useLenis();
+  const scrollToTop = () => {
+    lenis?.scrollTo(0, { offset: 0 });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToTop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]);
 
   const handleCategoryChange = (catId) => {
     setActiveCategory(catId);
@@ -198,7 +210,7 @@ function MenuPage({ onBack }) {
       {totalPages > 1 && (
         <div className="flex items-center justify-center gap-3">
           <button
-            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+            onClick={() => { setCurrentPage((p) => Math.max(1, p - 1)); scrollToTop(); }}
             disabled={currentPage === 1}
             className="px-4 py-2 rounded-lg border border-[#2B2D42]/10 text-xs font-semibold uppercase tracking-wider text-[#2B2D42]/60 hover:text-[#2B2D42] hover:border-[#F4A261]/40 disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer"
           >
@@ -208,7 +220,7 @@ function MenuPage({ onBack }) {
           {Array.from({ length: totalPages }, (_, idx) => idx + 1).map((page) => (
             <button
               key={page}
-              onClick={() => setCurrentPage(page)}
+              onClick={() => { setCurrentPage(page); scrollToTop(); }}
               className={`w-9 h-9 rounded-lg text-xs font-semibold tracking-wider transition-all cursor-pointer ${currentPage === page
                   ? "bg-[#E76F51] text-[#FFFDF9] font-bold"
                   : "bg-[#2B2D42]/[0.03] text-[#2B2D42]/60 border border-[#2B2D42]/10 hover:border-[#F4A261]/40 hover:text-[#2B2D42]"
@@ -219,7 +231,7 @@ function MenuPage({ onBack }) {
           ))}
 
           <button
-            onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+            onClick={() => { setCurrentPage((p) => Math.min(totalPages, p + 1)); scrollToTop(); }}
             disabled={currentPage === totalPages}
             className="px-4 py-2 rounded-lg border border-[#2B2D42]/10 text-xs font-semibold uppercase tracking-wider text-[#2B2D42]/60 hover:text-[#2B2D42] hover:border-[#F4A261]/40 disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer"
           >
