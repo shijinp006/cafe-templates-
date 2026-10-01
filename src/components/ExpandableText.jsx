@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-// Mobile "See more" text: grows/shrinks with a smooth Lenis-style ease.
+// Mobile "See more" text: grows/shrinks with a smooth ease.
 // On sm+ screens the full text always shows (no clamping).
 function ExpandableText({ text, expanded, className = "" }) {
   const ref = useRef(null);
@@ -18,18 +18,11 @@ function ExpandableText({ text, expanded, className = "" }) {
     return () => window.removeEventListener("resize", measure);
   }, [text]);
 
-  const needsToggle = heights.full > heights.collapsed + 2;
-  const maxH = expanded ? heights.full : heights.collapsed;
-
   return (
     <p
       ref={ref}
-      style={{ "--h": `${maxH}px` }}
-      className={`overflow-hidden max-h-[var(--h)] sm:max-h-none transition-[max-height] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        !expanded && needsToggle
-          ? "[mask-image:linear-gradient(to_bottom,black_55%,transparent)] sm:[mask-image:none]"
-          : ""
-      } ${className}`}
+      style={{ "--h": `${expanded ? heights.full : heights.collapsed}px` }}
+      className={`overflow-hidden max-h-[var(--h)] sm:max-h-none transition-[max-height] duration-500 ease-out ${className}`}
     >
       {text}
     </p>

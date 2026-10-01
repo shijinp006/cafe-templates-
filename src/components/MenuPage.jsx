@@ -176,7 +176,7 @@ function MenuPage({ onBack }) {
 
               {/* Bottom Panel: Details text panel shown on mobile tap or desktop hover */}
               <div
-                className={`absolute bottom-0 inset-x-0 h-auto min-h-[50%] max-h-[85%] overflow-y-auto sm:h-1/2 sm:min-h-0 sm:max-h-none sm:overflow-visible bg-[#FFF3E6] p-3 sm:p-6 flex flex-col ${expandedId === item.id ? "justify-start gap-2" : "justify-between"} sm:justify-between border-t border-[#F4A261]/20 transform transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] z-20 ${mobileActiveId === item.id ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+                className={`absolute bottom-0 inset-x-0 h-auto min-h-[50%] max-h-[85%] overflow-y-auto sm:h-1/2 sm:min-h-0 sm:max-h-none sm:overflow-visible bg-[#FFF3E6] p-3 sm:p-6 flex flex-col ${expandedId === item.id ? "justify-start gap-2" : "justify-between"} sm:justify-between border-t border-[#F4A261]/20 transform transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-20 ${mobileActiveId === item.id ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
                   } sm:translate-y-full sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100`}
               >
                 <div className="flex items-baseline justify-between gap-1.5">
