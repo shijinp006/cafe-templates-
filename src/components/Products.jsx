@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import FoodDoodles from "./FoodDoodles";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CardActions from "./CardActions";
 
@@ -72,8 +73,9 @@ function Products({ onViewFullMenu }) {
     <section
       id="products"
       ref={sectionRef}
-      className="relative w-full bg-[#FFFDF9] py-12 md:py-16 px-4 md:px-6 lg:px-20 overflow-hidden"
+      className="relative isolate w-full bg-[#FFFDF9] py-12 md:py-16 px-4 md:px-6 lg:px-20 overflow-hidden"
     >
+      <FoodDoodles set="products" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] max-w-2xl aspect-square rounded-full bg-[#E76F51]/10 blur-[120px] pointer-events-none" />
 
       <div className="text-center mb-10">

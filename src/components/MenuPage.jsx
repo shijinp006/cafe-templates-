@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ALL_MENU_ITEMS } from "../data/menuItems";
 import CardActions from "./CardActions";
+import FoodDoodles from "./FoodDoodles";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -46,7 +47,8 @@ function MenuPage({ onBack }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFDF9] text-[#2B2D42] pt-20 sm:pt-24 pb-24 sm:pb-20 px-4 md:px-6 lg:px-20">
+    <div className="relative isolate overflow-hidden min-h-screen bg-[#FFFDF9] text-[#2B2D42] pt-20 sm:pt-24 pb-24 sm:pb-20 px-4 md:px-6 lg:px-20">
+      <FoodDoodles set="menu" />
       {/* Top Header & Navigation */}
       <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 mb-8 md:mb-12 border-b border-[#2B2D42]/10 pb-6 md:pb-8">
         <div>

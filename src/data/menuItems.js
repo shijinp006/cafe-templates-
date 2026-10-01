@@ -29,7 +29,7 @@ export const ALL_MENU_ITEMS = [
     price: "AED 14",
     category: "burgers",
     description: "Applewood bacon, sharp cheddar, crispy onion straws, hickory barbecue glaze.",
-    image: "/frames/frame_0001.webp",
+    image: "/images/menu/bacon-bbq-burger.jpg",
   },
   {
     id: "loaded-fries",
@@ -61,7 +61,7 @@ export const ALL_MENU_ITEMS = [
     price: "AED 8",
     category: "sides",
     description: "Golden tater tots smothered in house ember chili, melted cheddar, and green onions.",
-    image: "/images/menu/loaded-fries.jpg",
+    image: "/images/menu/chili-tots.jpg",
   },
   {
     id: "charcoal-shake",
@@ -93,7 +93,7 @@ export const ALL_MENU_ITEMS = [
     price: "AED 5",
     category: "drinks",
     description: "Artisanal spicy ginger beer brewed with fresh ginger root and fresh lime.",
-    image: "/images/menu/sweet-tea.jpg",
+    image: "/images/menu/ginger-beer.jpg",
   },
   {
     id: "molten-cookie",
@@ -109,7 +109,7 @@ export const ALL_MENU_ITEMS = [
     price: "AED 7",
     category: "desserts",
     description: "Toasted marshmallow vanilla shake layered with graham cracker crumble and dark chocolate.",
-    image: "/images/menu/charcoal-shake.jpg",
+    image: "/images/menu/smores-shake.jpg",
   },
 ];
 

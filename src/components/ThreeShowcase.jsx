@@ -191,7 +191,7 @@ function ThreeShowcase() {
       ref={sectionRef}
       className="relative w-full bg-[#1B1C2E] py-24 md:py-32 px-4 md:px-6 lg:px-20 overflow-hidden"
     >
-      <div ref={headingRef} className="max-w-6xl mx-auto text-center mb-8">
+      <div ref={headingRef} className="w-full text-center mb-8">
         <p className="text-[#F4A261] text-xs uppercase tracking-[0.3em] mb-4">
           Rendered In Real Time
         </p>
@@ -206,7 +206,7 @@ function ThreeShowcase() {
 
       <div
         ref={canvasWrapRef}
-        className="max-w-4xl mx-auto h-[420px] md:h-[560px]"
+        className="w-full h-[420px] md:h-[560px]"
       >
         {visible && (
           <Canvas

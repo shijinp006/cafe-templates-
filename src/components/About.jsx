@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import FoodDoodles from "./FoodDoodles";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -42,7 +43,8 @@ function About() {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="relative w-full overflow-hidden bg-[#FFF3E6] py-12 md:py-16 px-4 md:px-6 lg:px-20">
+    <section id="about" ref={sectionRef} className="relative isolate w-full overflow-hidden bg-[#FFF3E6] py-12 md:py-16 px-4 md:px-6 lg:px-20">
+      <FoodDoodles set="about" />
       <div className="w-full grid md:grid-cols-2 gap-16">
         <div data-reveal className="relative">
           <div className="absolute -inset-6 bg-[#E76F51]/15 blur-3xl rounded-full opacity-60" />

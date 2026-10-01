@@ -54,6 +54,11 @@ export function CartProvider({ children }) {
     });
   };
 
+  const addCustomToOrder = (custom, qty = 1) => {
+    const id = `custom-${Date.now()}`;
+    setOrder((prev) => [...prev, { id, qty, custom }]);
+  };
+
   const removeFromOrder = (id) => {
     setOrder((prev) => prev.filter((o) => o.id !== id));
   };
@@ -80,6 +85,7 @@ export function CartProvider({ children }) {
         toggleWishlist,
         removeFromWishlist,
         addToOrder,
+        addCustomToOrder,
         removeFromOrder,
         updateOrderQty,
         clearOrder,

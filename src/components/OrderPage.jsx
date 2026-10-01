@@ -31,6 +31,9 @@ function OrderPage({ onBack, onNavigateMenu }) {
 
   const items = (cart?.order || [])
     .map((entry) => {
+      if (entry.custom) {
+        return { id: entry.id, image: "/images/about-burger.jpg", ...entry.custom, qty: entry.qty };
+      }
       const item = getMenuItemById(entry.id);
       return item ? { ...item, qty: entry.qty } : null;
     })
@@ -151,7 +154,7 @@ function OrderPage({ onBack, onNavigateMenu }) {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12 items-start max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12 items-start w-full">
           <div ref={listRef} className="min-w-0 lg:col-span-2 space-y-3 sm:space-y-4">
             {items.map((item) => (
               <div
@@ -174,6 +177,9 @@ function OrderPage({ onBack, onNavigateMenu }) {
                     <p className="text-[#E76F51] text-xs sm:text-sm font-semibold whitespace-nowrap mt-0.5 sm:mt-1">
                       {item.price}
                     </p>
+                    {item.ingredients && (
+                      <p className="text-[#2B2D42]/50 text-[11px] truncate mt-0.5">{item.ingredients}</p>
+                    )}
                   </div>
                   {/* Remove Button for mobile */}
                   <button

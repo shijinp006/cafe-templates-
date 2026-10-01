@@ -172,7 +172,7 @@ function Hero() {
             ref={heroTextRef}
             className="absolute z-20 left-5 right-5 top-[52%] xs:top-[56%] sm:left-6 sm:right-auto lg:left-20 sm:top-1/2 sm:-translate-y-1/2 max-w-none sm:max-w-md"
           >
-            <h1 className="brand-font text-4xl xs:text-5xl sm:text-7xl md:text-8xl font-bold text-[#FFFDF9] leading-[1.1] mb-3 sm:mb-6">
+            <h1 className="brand-font text-4xl xs:text-5xl sm:text-7xl md:text-8xl font-bold text-[#FFFDF9] leading-[1.1] mb-3 sm:mb-6 whitespace-nowrap">
               Crafted In
               <br />
               Layers

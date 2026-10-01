@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import FoodDoodles from "./FoodDoodles";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -59,7 +60,8 @@ function Contact() {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="relative w-full bg-[#FFFDF9] py-12 md:py-16 px-4 md:px-6 lg:px-20 overflow-hidden">
+    <section id="contact" ref={sectionRef} className="relative isolate w-full bg-[#FFFDF9] py-12 md:py-16 px-4 md:px-6 lg:px-20 overflow-hidden">
+      <FoodDoodles set="contact" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] max-w-2xl aspect-square rounded-full bg-[#E76F51]/10 blur-[120px] pointer-events-none" />
       <div className="max-w-4xl mx-auto text-center mb-10">
         <p data-reveal className="text-[#E76F51] text-xs uppercase tracking-[0.3em] mb-4">
@@ -77,7 +79,7 @@ function Contact() {
 
       <div
         data-reveal
-        className="relative max-w-5xl mx-auto grid lg:grid-cols-5 rounded-3xl overflow-hidden border border-[#2B2D42]/10 bg-[#2B2D42]/[0.03] backdrop-blur-sm shadow-[0_30px_80px_rgba(43,45,66,0.15)]"
+        className="relative w-full grid lg:grid-cols-5 rounded-3xl overflow-hidden border border-[#2B2D42]/10 bg-[#2B2D42]/[0.03] backdrop-blur-sm shadow-[0_30px_80px_rgba(43,45,66,0.15)]"
       >
         {/* Info panel */}
         <aside className="lg:col-span-2 p-5 sm:p-8 md:p-10 bg-gradient-to-br from-[#E76F51]/20 via-[#7A3B2A]/10 to-transparent border-b lg:border-b-0 lg:border-r border-[#2B2D42]/10 flex flex-col gap-6 sm:gap-8">
@@ -161,7 +163,7 @@ function Contact() {
         </div>
       </div>
 
-      <footer className="max-w-6xl mx-auto mt-12 pt-8 border-t border-[#2B2D42]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <footer className="w-full mt-12 pt-8 border-t border-[#2B2D42]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="brand-font text-[#E76F51] tracking-widest">EMBER</div>
         <p className="text-[#2B2D42]/40 text-xs">
           &copy; {new Date().getFullYear()} EMBER Burger Co. All rights reserved.
