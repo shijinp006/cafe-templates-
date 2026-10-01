@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import BurgerLoader from "./BurgerLoader";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -152,17 +153,11 @@ function Hero() {
     <section id="hero" className="relative">
       {!loaded && (
         <div
-          className="fixed inset-0 z-[100] bg-[#0a0a0a] flex flex-col items-center justify-center gap-4 transition-opacity duration-500"
+          className="fixed inset-0 z-[100] bg-[#E76F51] flex flex-col items-center justify-center gap-6 transition-opacity duration-500"
           style={{ opacity: loaded ? 0 : 1, pointerEvents: loaded ? "none" : "auto" }}
         >
-          <div className="brand-font text-xl tracking-widest text-amber-500">EMBER</div>
-          <div className="w-[220px] h-[2px] bg-neutral-800">
-            <div
-              className="h-full bg-gradient-to-r from-amber-600 to-amber-200"
-              style={{ width: `${percent}%` }}
-            />
-          </div>
-          <div className="text-xs uppercase tracking-widest text-gray-500">
+          <BurgerLoader className="w-56 sm:w-72 h-auto overflow-visible" />
+          <div className="text-xs uppercase tracking-[0.3em] text-[#FFFDF9]">
             Loading {percent}%
           </div>
         </div>
@@ -177,27 +172,24 @@ function Hero() {
             ref={heroTextRef}
             className="absolute z-20 left-4 right-4 top-[58%] sm:left-6 sm:right-auto lg:left-20 sm:top-1/2 sm:-translate-y-1/2 max-w-none sm:max-w-md"
           >
-            <p className="text-amber-500 text-xs uppercase tracking-[0.3em] mb-4">
-              Ember Signature
-            </p>
-            <h1 className="brand-font text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+            <h1 className="brand-font text-5xl md:text-8xl font-bold text-[#FFFDF9] leading-tight mb-6 whitespace-nowrap">
               Crafted In
               <br />
               Layers
             </h1>
-            <p className="text-gray-400 text-base md:text-lg max-w-sm mb-10">
+            <p className="text-[#FFFDF9]/60 text-base md:text-lg max-w-sm mb-10">
               Watch our signature burger come apart, ingredient by
               ingredient — each one flame-grilled and stacked with
               intention.
             </p>
-            <div className="hidden sm:flex items-center gap-2 text-gray-500 text-xs uppercase tracking-widest">
+            <div className="hidden sm:flex items-center gap-2 text-[#FFFDF9]/50 text-xs uppercase tracking-widest">
               <span>Scroll to explore</span>
               <span className="inline-block animate-bounce">↓</span>
             </div>
           </div>
 
           <div className="absolute top-0 left-0 right-0 h-[55%] w-full sm:inset-y-0 sm:left-auto sm:right-0 sm:h-full sm:w-[85%] lg:w-[82%] z-0 pointer-events-none flex items-center justify-center">
-            <div className="w-[65%] h-[65%] rounded-full bg-gradient-to-br from-amber-500/30 via-amber-600/20 to-transparent blur-[90px]" />
+            <div className="w-[65%] h-[65%] rounded-full bg-gradient-to-br from-[#F4A261]/30 via-[#E76F51]/20 to-transparent blur-[90px]" />
           </div>
 
           <canvas

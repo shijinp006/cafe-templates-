@@ -189,16 +189,16 @@ function ThreeShowcase() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-[#050505] py-24 md:py-32 px-4 md:px-6 lg:px-20 overflow-hidden"
+      className="relative w-full bg-[#1B1C2E] py-24 md:py-32 px-4 md:px-6 lg:px-20 overflow-hidden"
     >
       <div ref={headingRef} className="max-w-6xl mx-auto text-center mb-8">
-        <p className="text-amber-500 text-xs uppercase tracking-[0.3em] mb-4">
+        <p className="text-[#F4A261] text-xs uppercase tracking-[0.3em] mb-4">
           Rendered In Real Time
         </p>
-        <h2 className="brand-font text-3xl md:text-5xl font-bold text-white mb-6">
+        <h2 className="brand-font text-3xl md:text-5xl font-bold text-[#FFFDF9] mb-6">
           Every Layer, In 3D
         </h2>
-        <p className="text-gray-400 max-w-xl mx-auto">
+        <p className="text-[#FFFDF9]/60 max-w-xl mx-auto">
           Move your cursor to tilt the build. This isn't a video — it's a
           live scene, rendered right in your browser.
         </p>

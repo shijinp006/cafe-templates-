@@ -1,119 +1,6 @@
 import { useState, useEffect } from "react";
-
-const ALL_MENU_ITEMS = [
-  {
-    id: "ember-signature",
-    name: "Ember Signature",
-    price: "$12",
-    category: "burgers",
-    description: "Aged cheddar, hand-pressed grass-fed beef, toasted brioche, crisp lettuce and vine tomato.",
-    image: "/images/about-burger.jpg",
-  },
-  {
-    id: "double-flame",
-    name: "Double Flame Smothered",
-    price: "$15",
-    category: "burgers",
-    description: "Double grass-fed beef patty, melted cheddar drip, smoked bacon, signature ember aioli.",
-    image: "/images/menu/double-burger.jpg",
-  },
-  {
-    id: "crispy-chicken",
-    name: "Crispy Buttermilk Chicken",
-    price: "$13",
-    category: "burgers",
-    description: "Golden buttermilk fried chicken, house spicy coleslaw, kosher dill pickles, toasted brioche.",
-    image: "/images/menu/chicken-burger.jpg",
-  },
-  {
-    id: "smoky-bacon-bbq",
-    name: "Smoky Bacon BBQ Burger",
-    price: "$14",
-    category: "burgers",
-    description: "Applewood bacon, sharp cheddar, crispy onion straws, hickory barbecue glaze.",
-    image: "/frames/frame_0001.webp",
-  },
-  {
-    id: "loaded-fries",
-    name: "Loaded Fries",
-    price: "$7",
-    category: "sides",
-    description: "Hand-cut fries, melted cheddar, crispy bacon, smoked chili aioli.",
-    image: "/images/menu/loaded-fries.jpg",
-  },
-  {
-    id: "onion-rings",
-    name: "Beer-Battered Onion Rings",
-    price: "$6",
-    category: "sides",
-    description: "Crispy beer-battered Vidalia onion rings served with house garlic aioli dipping sauce.",
-    image: "/images/menu/onion-rings.jpg",
-  },
-  {
-    id: "ember-salad",
-    name: "Ember Salad",
-    price: "$9",
-    category: "sides",
-    description: "Charred romaine, cherry tomato, shaved parmesan, citrus vinaigrette.",
-    image: "/images/menu/ember-salad.jpg",
-  },
-  {
-    id: "chili-tots",
-    name: "Smoked Chili Cheese Tots",
-    price: "$8",
-    category: "sides",
-    description: "Golden tater tots smothered in house ember chili, melted cheddar, and green onions.",
-    image: "/images/menu/loaded-fries.jpg",
-  },
-  {
-    id: "charcoal-shake",
-    name: "Charcoal Shake",
-    price: "$6",
-    category: "drinks",
-    description: "Activated-charcoal vanilla shake, whipped cream, toasted marshmallow.",
-    image: "/images/menu/charcoal-shake.jpg",
-  },
-  {
-    id: "chocolate-heaven",
-    name: "Decadent Chocolate Shake",
-    price: "$7",
-    category: "drinks",
-    description: "Triple fudge chocolate milkshake topped with fresh whipped cream and cocoa drizzle.",
-    image: "/images/menu/chocolate-shake.jpg",
-  },
-  {
-    id: "sweet-tea",
-    name: "Sweet Tea",
-    price: "$4",
-    category: "drinks",
-    description: "House-brewed black tea, lightly sweetened, served over crushed ice.",
-    image: "/images/menu/sweet-tea.jpg",
-  },
-  {
-    id: "craft-ginger-beer",
-    name: "Spicy Craft Ginger Beer",
-    price: "$5",
-    category: "drinks",
-    description: "Artisanal spicy ginger beer brewed with fresh ginger root and fresh lime.",
-    image: "/images/menu/sweet-tea.jpg",
-  },
-  {
-    id: "molten-cookie",
-    name: "Warm Molten Skillet Cookie",
-    price: "$8",
-    category: "desserts",
-    description: "Cast-iron skillet chocolate chip cookie served warm with vanilla bean ice cream and fudge.",
-    image: "/images/menu/molten-cookie.jpg",
-  },
-  {
-    id: "marshmallow-slink",
-    name: "S'mores Sundae Shake",
-    price: "$7",
-    category: "desserts",
-    description: "Toasted marshmallow vanilla shake layered with graham cracker crumble and dark chocolate.",
-    image: "/images/menu/charcoal-shake.jpg",
-  },
-];
+import { ALL_MENU_ITEMS } from "../data/menuItems";
+import CardActions from "./CardActions";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -159,22 +46,22 @@ function MenuPage({ onBack }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pt-24 pb-20 px-4 md:px-6 lg:px-20">
+    <div className="min-h-screen bg-[#FFFDF9] text-[#2B2D42] pt-24 pb-20 px-4 md:px-6 lg:px-20">
       {/* Top Header & Navigation */}
-      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 mb-12 border-b border-white/10 pb-8">
+      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 mb-12 border-b border-[#2B2D42]/10 pb-8">
         <div>
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 text-amber-500 hover:text-amber-400 text-xs uppercase tracking-widest font-semibold mb-3 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 text-[#E76F51] hover:text-[#E76F51] text-xs uppercase tracking-widest font-semibold mb-3 transition-colors cursor-pointer"
           >
             <span>← Back to Home</span>
           </button>
           <div className="flex items-center gap-4">
-            <h1 className="brand-font text-3xl md:text-5xl font-bold text-white">
+            <h1 className="brand-font text-3xl md:text-5xl font-bold text-[#2B2D42]">
               Full Craft Menu
             </h1>
             {isLoading && (
-              <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] uppercase tracking-widest font-semibold animate-pulse">
+              <span className="px-3 py-1 rounded-full bg-[#F4A261]/10 border border-[#F4A261]/30 text-[#E76F51] text-[10px] uppercase tracking-widest font-semibold animate-pulse">
                 Loading Menu...
               </span>
             )}
@@ -189,8 +76,8 @@ function MenuPage({ onBack }) {
             key={cat.id}
             onClick={() => handleCategoryChange(cat.id)}
             className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 whitespace-nowrap cursor-pointer ${activeCategory === cat.id
-                ? "bg-amber-600 text-black shadow-[0_0_20px_rgba(217,119,6,0.4)]"
-                : "bg-white/[0.04] text-gray-400 border border-white/10 hover:border-amber-500/40 hover:text-amber-400"
+                ? "bg-[#E76F51] text-[#FFFDF9] shadow-[0_0_20px_rgba(231,111,81,0.4)]"
+                : "bg-[#2B2D42]/[0.04] text-[#2B2D42]/60 border border-[#2B2D42]/10 hover:border-[#F4A261]/40 hover:text-[#E76F51]"
               }`}
           >
             {cat.name}
@@ -204,26 +91,26 @@ function MenuPage({ onBack }) {
           {Array.from({ length: 8 }).map((_, i) => (
             <div
               key={i}
-              className="relative h-[260px] sm:h-[420px] rounded-xl sm:rounded-2xl border border-white/10 bg-[#121212] overflow-hidden flex flex-col justify-between shadow-lg shimmer-box"
+              className="relative h-[260px] sm:h-[420px] rounded-xl sm:rounded-2xl border border-[#2B2D42]/10 bg-[#FFF3E6] overflow-hidden flex flex-col justify-between shadow-lg shimmer-box"
             >
               {/* Top half image placeholder */}
-              <div className="w-full h-1/2 bg-white/[0.03] relative flex items-center justify-center">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-white/5 animate-pulse flex items-center justify-center">
-                  <span className="brand-font text-amber-500/40 text-[10px] sm:text-xs font-bold">EMBER</span>
+              <div className="w-full h-1/2 bg-[#2B2D42]/[0.03] relative flex items-center justify-center">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-[#2B2D42]/5 animate-pulse flex items-center justify-center">
+                  <span className="brand-font text-[#E76F51]/40 text-[10px] sm:text-xs font-bold">EMBER</span>
                 </div>
               </div>
 
               {/* Bottom half text placeholders */}
-              <div className="p-3 sm:p-6 flex flex-col justify-between h-1/2 bg-[#121212]">
+              <div className="p-3 sm:p-6 flex flex-col justify-between h-1/2 bg-[#FFF3E6]">
                 <div className="flex items-center justify-between gap-2">
-                  <div className="h-4 sm:h-5 w-24 sm:w-36 bg-white/10 rounded-md animate-pulse" />
-                  <div className="h-4 sm:h-5 w-8 sm:w-12 bg-amber-500/20 rounded-md animate-pulse" />
+                  <div className="h-4 sm:h-5 w-24 sm:w-36 bg-[#2B2D42]/10 rounded-md animate-pulse" />
+                  <div className="h-4 sm:h-5 w-8 sm:w-12 bg-[#F4A261]/20 rounded-md animate-pulse" />
                 </div>
 
                 <div className="space-y-2 mt-2 sm:mt-4">
-                  <div className="h-2 sm:h-2.5 w-12 sm:w-16 bg-amber-500/30 rounded-md animate-pulse mb-1.5" />
-                  <div className="h-2.5 sm:h-3 w-full bg-white/5 rounded-md animate-pulse" />
-                  <div className="h-2.5 sm:h-3 w-4/5 bg-white/5 rounded-md animate-pulse" />
+                  <div className="h-2 sm:h-2.5 w-12 sm:w-16 bg-[#F4A261]/30 rounded-md animate-pulse mb-1.5" />
+                  <div className="h-2.5 sm:h-3 w-full bg-[#2B2D42]/5 rounded-md animate-pulse" />
+                  <div className="h-2.5 sm:h-3 w-4/5 bg-[#2B2D42]/5 rounded-md animate-pulse" />
                 </div>
               </div>
             </div>
@@ -235,9 +122,11 @@ function MenuPage({ onBack }) {
           {currentItems.map((item) => (
             <div
               key={item.id}
-              onClick={() => setMobileActiveId((prev) => (prev === item.id ? null : item.id))}
-              className="relative h-[260px] sm:h-[420px] rounded-xl sm:rounded-2xl border border-white/10 bg-[#121212] overflow-hidden group hover:border-amber-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(245,158,11,0.15)] cursor-pointer"
+              onClick={() => window.innerWidth < 640 && setMobileActiveId((prev) => (prev === item.id ? null : item.id))}
+              className="relative h-[260px] sm:h-[420px] rounded-xl sm:rounded-2xl border border-[#2B2D42]/10 bg-[#FFF3E6] overflow-hidden group hover:border-[#F4A261]/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(244,162,97,0.15)] cursor-pointer"
             >
+              <CardActions itemId={item.id} />
+
               {/* Image Container: Full height resting state, contracts to top half (h-1/2) on desktop hover or mobile tap */}
               <div
                 className={`absolute top-0 inset-x-0 transition-all duration-500 ease-out overflow-hidden z-0 ${mobileActiveId === item.id ? "h-1/2" : "h-full"
@@ -255,14 +144,14 @@ function MenuPage({ onBack }) {
                   className={`absolute bottom-0 inset-x-0 p-2.5 sm:p-5 z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-1 bg-gradient-to-t from-black via-black/40 to-transparent transition-opacity duration-300 ${mobileActiveId === item.id ? "opacity-0 pointer-events-none" : "opacity-100"
                     } sm:group-hover:opacity-0`}
                 >
-                  <h3 className="brand-font text-xs sm:text-lg font-bold text-white line-clamp-1">
+                  <h3 className="brand-font text-xs sm:text-lg font-bold text-[#FFFDF9] line-clamp-1 min-w-0 sm:flex-1">
                     {item.name}
                   </h3>
                   <div className="flex items-center justify-between w-full sm:w-auto">
-                    <span className="brand-font text-xs sm:text-xl font-bold text-amber-500">
+                    <span className="brand-font text-xs sm:text-xl font-bold text-[#F4A261] whitespace-nowrap shrink-0">
                       {item.price}
                     </span>
-                    <span className="text-[9px] uppercase tracking-wider text-amber-400/90 font-semibold sm:hidden">
+                    <span className="text-[9px] uppercase tracking-wider text-[#F4A261]/90 font-semibold sm:hidden">
                       Details ↓
                     </span>
                   </div>
@@ -271,14 +160,14 @@ function MenuPage({ onBack }) {
 
               {/* Bottom Panel: Details text panel shown on mobile tap or desktop hover */}
               <div
-                className={`absolute bottom-0 inset-x-0 h-1/2 bg-[#121212] p-3 sm:p-6 flex flex-col justify-between border-t border-amber-500/20 transform transition-all duration-500 ease-out z-20 ${mobileActiveId === item.id ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+                className={`absolute bottom-0 inset-x-0 h-1/2 bg-[#FFF3E6] p-3 sm:p-6 flex flex-col justify-between border-t border-[#F4A261]/20 transform transition-all duration-500 ease-out z-20 ${mobileActiveId === item.id ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
                   } sm:translate-y-full sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100`}
               >
                 <div className="flex items-baseline justify-between gap-1.5">
-                  <h3 className="brand-font text-xs sm:text-lg font-bold text-amber-400 line-clamp-1">
+                  <h3 className="brand-font text-xs sm:text-lg font-bold text-[#E76F51] line-clamp-1 min-w-0 sm:flex-1">
                     {item.name}
                   </h3>
-                  <span className="brand-font text-xs sm:text-xl font-bold text-amber-500 shrink-0">
+                  <span className="brand-font text-xs sm:text-xl font-bold text-[#E76F51] whitespace-nowrap shrink-0">
                     {item.price}
                   </span>
                 </div>
@@ -290,10 +179,10 @@ function MenuPage({ onBack }) {
                       : "-translate-y-4 opacity-0"
                     } sm:-translate-y-4 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100`}
                 >
-                  <p className="text-amber-400 text-[9px] sm:text-[10px] uppercase tracking-widest mb-0.5 sm:mb-1 font-semibold">
+                  <p className="text-[#E76F51] text-[9px] sm:text-[10px] uppercase tracking-widest mb-0.5 sm:mb-1 font-semibold">
                     Details
                   </p>
-                  <p className="text-gray-300 text-[10px] sm:text-xs md:text-sm leading-tight sm:leading-relaxed line-clamp-2 sm:line-clamp-none">
+                  <p className="text-[#2B2D42]/80 text-[10px] sm:text-xs md:text-sm leading-tight sm:leading-relaxed line-clamp-2 sm:line-clamp-none">
                     {item.description}
                   </p>
                 </div>
@@ -309,7 +198,7 @@ function MenuPage({ onBack }) {
           <button
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             disabled={currentPage === 1}
-            className="px-4 py-2 rounded-lg border border-white/10 text-xs font-semibold uppercase tracking-wider text-gray-400 hover:text-white hover:border-amber-500/40 disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer"
+            className="px-4 py-2 rounded-lg border border-[#2B2D42]/10 text-xs font-semibold uppercase tracking-wider text-[#2B2D42]/60 hover:text-[#2B2D42] hover:border-[#F4A261]/40 disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer"
           >
             ← Prev
           </button>
@@ -319,8 +208,8 @@ function MenuPage({ onBack }) {
               key={page}
               onClick={() => setCurrentPage(page)}
               className={`w-9 h-9 rounded-lg text-xs font-semibold tracking-wider transition-all cursor-pointer ${currentPage === page
-                  ? "bg-amber-600 text-black font-bold"
-                  : "bg-white/[0.03] text-gray-400 border border-white/10 hover:border-amber-500/40 hover:text-white"
+                  ? "bg-[#E76F51] text-[#FFFDF9] font-bold"
+                  : "bg-[#2B2D42]/[0.03] text-[#2B2D42]/60 border border-[#2B2D42]/10 hover:border-[#F4A261]/40 hover:text-[#2B2D42]"
                 }`}
             >
               {page}
@@ -330,7 +219,7 @@ function MenuPage({ onBack }) {
           <button
             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 rounded-lg border border-white/10 text-xs font-semibold uppercase tracking-wider text-gray-400 hover:text-white hover:border-amber-500/40 disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer"
+            className="px-4 py-2 rounded-lg border border-[#2B2D42]/10 text-xs font-semibold uppercase tracking-wider text-[#2B2D42]/60 hover:text-[#2B2D42] hover:border-[#F4A261]/40 disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer"
           >
             Next →
           </button>

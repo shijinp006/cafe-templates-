@@ -13,7 +13,6 @@ const STATS = [
 
 function About() {
   const sectionRef = useRef(null);
-  const dividerRef = useRef(null);
   const imgRef = useRef(null);
 
   useEffect(() => {
@@ -28,15 +27,9 @@ function About() {
       });
 
       tl.fromTo(
-        dividerRef.current,
-        { scaleX: 0 },
-        { scaleX: 1, duration: 0.6, ease: "power2.out" }
-      )
-        .fromTo(
           imgRef.current,
           { clipPath: "inset(0% 0% 100% 0%)", scale: 1.08 },
-          { clipPath: "inset(0% 0% 0% 0%)", scale: 1, duration: 1.1, ease: "power4.out" },
-          "-=0.2"
+          { clipPath: "inset(0% 0% 0% 0%)", scale: 1, duration: 1.1, ease: "power4.out" }
         )
         .from(
           "[data-reveal]",
@@ -49,19 +42,16 @@ function About() {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="relative w-full bg-[#050505] py-24 md:py-32 px-4 md:px-6 lg:px-20">
-      <div
-        ref={dividerRef}
-        className="mx-auto w-24 h-[2px] bg-gradient-to-r from-transparent via-amber-500 to-transparent mb-16 origin-center"
-      />
+    <section id="about" ref={sectionRef} className="relative w-full overflow-hidden bg-[#FFF3E6] py-12 md:py-16 px-4 md:px-6 lg:px-20">
       <div className="w-full grid md:grid-cols-2 gap-16">
         <div data-reveal className="relative">
-          <div className="absolute -inset-6 bg-amber-600/15 blur-3xl rounded-full opacity-60" />
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+          <div className="absolute -inset-6 bg-[#E76F51]/15 blur-3xl rounded-full opacity-60" />
+          <div className="relative rounded-2xl overflow-hidden border border-[#2B2D42]/10 shadow-2xl group">
             <img
               ref={imgRef}
               src="/images/about-burger.jpg"
               alt="EMBER signature cheeseburger studio render"
+              loading="lazy"
               className="relative w-full h-[340px] sm:h-[450px] md:h-[520px] object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
@@ -69,13 +59,13 @@ function About() {
         </div>
 
         <div>
-          <p data-reveal className="text-amber-500 text-xs uppercase tracking-[0.3em] mb-4">
+          <p data-reveal className="text-[#E76F51] text-xs uppercase tracking-[0.3em] mb-4">
             About EMBER
           </p>
-          <h2 data-reveal className="brand-font text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+          <h2 data-reveal className="brand-font text-3xl md:text-5xl font-bold text-[#2B2D42] mb-6 leading-tight">
             Crafted Without Shortcuts
           </h2>
-          <p data-reveal className="text-gray-400 text-base md:text-lg leading-relaxed mb-10">
+          <p data-reveal className="text-[#2B2D42]/60 text-base md:text-lg leading-relaxed mb-10">
             EMBER was born from a single obsession: prove that fast food
             doesn't have to mean average food. Every bun is baked in-house,
             every patty hand-pressed and flame-seared to order, and every
@@ -85,11 +75,11 @@ function About() {
           <div className="grid grid-cols-2 gap-y-8 gap-x-6">
             {STATS.map((stat) => (
               <div data-reveal key={stat.label}>
-                <div className="brand-font text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-600">
+                <div className="brand-font text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FBD3B0] to-[#E76F51]">
                   {stat.value}
                   <span className="text-lg md:text-xl ml-1">{stat.unit}</span>
                 </div>
-                <div className="text-gray-500 text-xs uppercase tracking-widest mt-1">
+                <div className="text-[#2B2D42]/50 text-xs uppercase tracking-widest mt-1">
                   {stat.label}
                 </div>
               </div>

@@ -1,27 +1,48 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { LenisProvider } from "./lib/LenisContext";
+import { CartProvider } from "./lib/CartContext";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Products from "./components/Products";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import MenuPage from "./components/MenuPage";
+import MobileNav from "./components/MobileNav";
+import PageLoader from "./components/PageLoader";
+
+const PAGE_LOAD_MS = 1500;
+
+const MenuPage = lazy(() => import("./components/MenuPage"));
+const WishlistPage = lazy(() => import("./components/WishlistPage"));
+const OrderPage = lazy(() => import("./components/OrderPage"));
+
+const PAGE_FALLBACK = <PageLoader />;
 
 function App() {
-  const [currentView, setCurrentView] = useState(() =>
-    window.location.hash === "#menu" ? "menu" : "home"
-  );
+  const [pageLoading, setPageLoading] = useState(false);
+  const loadTimer = useRef(null);
+  const [currentView, setCurrentView] = useState(() => {
+    const hash = window.location.hash;
+    if (hash === "#menu") return "menu";
+    if (hash === "#wishlist") return "wishlist";
+    if (hash === "#order") return "order";
+    return "home";
+  });
 
   useEffect(() => {
     const handleHashChange = () => {
-      if (window.location.hash === "#menu") {
+      const hash = window.location.hash;
+      if (hash === "#menu") {
         setCurrentView("menu");
+      } else if (hash === "#wishlist") {
+        setCurrentView("wishlist");
+      } else if (hash === "#order") {
+        setCurrentView("order");
       } else if (
-        window.location.hash === "" ||
-        window.location.hash === "#hero" ||
-        window.location.hash === "#products" ||
-        window.location.hash === "#about" ||
-        window.location.hash === "#contact"
+        hash === "" ||
+        hash === "#hero" ||
+        hash === "#products" ||
+        hash === "#about" ||
+        hash === "#contact"
       ) {
         setCurrentView("home");
       }
@@ -30,17 +51,25 @@ function App() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
-  const navigateToMenu = () => {
-    window.location.hash = "menu";
-    setCurrentView("menu");
+  const navigateTo = (view, hash) => {
+    window.location.hash = hash;
+    setCurrentView(view);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const navigateToHome = () => {
-    window.location.hash = "hero";
-    setCurrentView("home");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const navigateWithLoader = (view, hash) => {
+    setPageLoading(true);
+    clearTimeout(loadTimer.current);
+    loadTimer.current = setTimeout(() => setPageLoading(false), PAGE_LOAD_MS);
+    navigateTo(view, hash);
   };
+
+  useEffect(() => () => clearTimeout(loadTimer.current), []);
+
+  const navigateToMenu = () => navigateTo("menu", "menu");
+  const navigateToWishlist = () => navigateWithLoader("wishlist", "wishlist");
+  const navigateToOrder = () => navigateWithLoader("order", "order");
+  const navigateToHome = () => navigateTo("home", "hero");
 
   const handleNavigateSection = (id, lenis) => {
     window.location.hash = id;
@@ -79,17 +108,35 @@ function App() {
 
   return (
     <LenisProvider>
-      <Navbar onNavigateSection={handleNavigateSection} />
-      {currentView === "menu" ? (
-        <MenuPage onBack={navigateToHome} />
-      ) : (
-        <>
-          <Hero />
-          <Products onViewFullMenu={navigateToMenu} />
-          <About />
-          <Contact />
-        </>
-      )}
+      <CartProvider>
+        <Navbar
+          onNavigateSection={handleNavigateSection}
+          onNavigateWishlist={navigateToWishlist}
+          onNavigateOrder={navigateToOrder}
+        />
+        <MobileNav onNavigateSection={handleNavigateSection} />
+        {pageLoading && <PageLoader />}
+        {currentView === "menu" ? (
+          <Suspense fallback={PAGE_FALLBACK}>
+            <MenuPage onBack={navigateToHome} />
+          </Suspense>
+        ) : currentView === "wishlist" ? (
+          <Suspense fallback={PAGE_FALLBACK}>
+            <WishlistPage onBack={navigateToHome} onNavigateMenu={navigateToMenu} />
+          </Suspense>
+        ) : currentView === "order" ? (
+          <Suspense fallback={PAGE_FALLBACK}>
+            <OrderPage onBack={navigateToHome} onNavigateMenu={navigateToMenu} />
+          </Suspense>
+        ) : (
+          <>
+            <Hero />
+            <Products onViewFullMenu={navigateToMenu} />
+            <About />
+            <Contact />
+          </>
+        )}
+      </CartProvider>
     </LenisProvider>
   );
 }
