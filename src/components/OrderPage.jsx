@@ -102,12 +102,6 @@ function OrderPage({ onBack, onNavigateMenu }) {
         className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 mb-8 sm:mb-12 border-b border-[#2B2D42]/10 pb-6 sm:pb-8"
       >
         <div>
-          <button
-            onClick={onBack}
-            className="inline-flex items-center gap-2 text-[#E76F51] hover:text-[#E76F51] text-xs uppercase tracking-widest font-semibold mb-2 sm:mb-3 transition-colors cursor-pointer"
-          >
-            <span>← Back to Home</span>
-          </button>
           <h1 className="brand-font text-3xl sm:text-4xl md:text-5xl font-bold text-[#2B2D42]">
             Your Order
           </h1>

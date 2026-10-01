@@ -3,6 +3,7 @@ import { useLenis } from "../lib/LenisContext";
 import { useCart } from "../lib/CartContext";
 
 const LINKS = [
+  { id: "hero", label: "Home" },
   { id: "products", label: "Menu" },
   { id: "about", label: "About" },
   { id: "contact", label: "Contact" },

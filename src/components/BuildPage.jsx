@@ -114,12 +114,6 @@ function BuildPage({ onBack, onViewOrder }) {
         className="w-full flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 sm:gap-4 mb-6 sm:mb-8"
       >
         <div>
-          <button
-            onClick={onBack}
-            className="inline-flex items-center gap-2 text-[#E76F51] text-xs uppercase tracking-widest font-semibold mb-2 sm:mb-3 transition-colors cursor-pointer"
-          >
-            <span>← Back to Home</span>
-          </button>
           <h1 className="brand-font text-3xl sm:text-4xl md:text-5xl font-bold">Build Your Own</h1>
           <p className="text-[#2B2D42]/60 text-sm mt-2 max-w-md">{product.blurb}</p>
         </div>

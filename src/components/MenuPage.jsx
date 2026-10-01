@@ -66,12 +66,6 @@ function MenuPage({ onBack }) {
       {/* Top Header & Navigation */}
       <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 mb-8 md:mb-12 border-b border-[#2B2D42]/10 pb-6 md:pb-8">
         <div>
-          <button
-            onClick={onBack}
-            className="inline-flex items-center gap-2 text-[#E76F51] hover:text-[#E76F51] text-xs uppercase tracking-widest font-semibold mb-2 sm:mb-3 transition-colors cursor-pointer"
-          >
-            <span>← Back to Home</span>
-          </button>
           <div className="flex items-center gap-3 sm:gap-4">
             <h1 className="brand-font text-3xl sm:text-4xl md:text-5xl font-bold text-[#2B2D42]">
               Full Craft Menu
