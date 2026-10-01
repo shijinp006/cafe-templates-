@@ -9,6 +9,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 const MENU_ITEMS = [
   {
+    id: "ember-signature",
+    name: "Ember Signature",
+    price: "AED 12",
+    description: "Aged cheddar, hand-pressed grass-fed beef, toasted brioche, crisp lettuce and vine tomato.",
+    image: "/images/about-burger.jpg",
+  },
+  {
+    id: "double-flame",
+    name: "Double Flame Smothered",
+    price: "AED 15",
+    description: "Double grass-fed beef patty, melted cheddar drip, smoked bacon, signature ember aioli.",
+    image: "/images/menu/double-burger.jpg",
+  },
+  {
     id: "loaded-fries",
     name: "Loaded Fries",
     price: "AED 7",
@@ -93,7 +107,7 @@ function Products({ onViewFullMenu }) {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
         {MENU_ITEMS.map((item, i) => (
           <div
             key={item.id}

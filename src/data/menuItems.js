@@ -111,6 +111,22 @@ export const ALL_MENU_ITEMS = [
     description: "Toasted marshmallow vanilla shake layered with graham cracker crumble and dark chocolate.",
     image: "/images/menu/smores-shake.jpg",
   },
+  {
+    id: "caramel-brownie",
+    name: "Salted Caramel Truffle Brownie",
+    price: "AED 9",
+    category: "desserts",
+    description: "Warm fudge brownie drizzled with salted caramel, toasted pecans, and vanilla bean gelato.",
+    image: "/images/menu/caramel-brownie.jpg",
+  },
+  {
+    id: "berry-cheesecake",
+    name: "Smoked Vanilla Berry Cheesecake",
+    price: "AED 8",
+    category: "desserts",
+    description: "New York style cheesecake with smoked Madagascar vanilla and wild berry compote.",
+    image: "/images/menu/berry-cheesecake.jpg",
+  },
 ];
 
 export function getMenuItemById(id) {
