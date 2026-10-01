@@ -107,8 +107,8 @@ function Products({ onViewFullMenu }) {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
-        {MENU_ITEMS.map((item, i) => (
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+        {MENU_ITEMS.slice(0, 4).map((item, i) => (
           <div
             key={item.id}
             ref={(el) => (menuItemRefs.current[i] = el)}
