@@ -93,19 +93,19 @@ function OrderPage({ onBack, onNavigateMenu }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFDF9] text-[#2B2D42] pt-24 pb-20 px-4 md:px-6 lg:px-20">
+    <div className="min-h-screen bg-[#FFFDF9] text-[#2B2D42] pt-20 sm:pt-24 pb-28 sm:pb-20 px-4 md:px-6 lg:px-20">
       <div
         ref={headerRef}
-        className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-12 border-b border-[#2B2D42]/10 pb-8"
+        className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 mb-8 sm:mb-12 border-b border-[#2B2D42]/10 pb-6 sm:pb-8"
       >
         <div>
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 text-[#E76F51] hover:text-[#E76F51] text-xs uppercase tracking-widest font-semibold mb-3 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 text-[#E76F51] hover:text-[#E76F51] text-xs uppercase tracking-widest font-semibold mb-2 sm:mb-3 transition-colors cursor-pointer"
           >
             <span>← Back to Home</span>
           </button>
-          <h1 className="brand-font text-3xl md:text-5xl font-bold text-[#2B2D42]">
+          <h1 className="brand-font text-3xl sm:text-4xl md:text-5xl font-bold text-[#2B2D42]">
             Your Order
           </h1>
         </div>
@@ -117,7 +117,7 @@ function OrderPage({ onBack, onNavigateMenu }) {
       </div>
 
       {placed ? (
-        <div className="flex flex-col items-center justify-center text-center py-24">
+        <div className="flex flex-col items-center justify-center text-center py-16 sm:py-24">
           <div className="w-16 h-16 rounded-full bg-[#F4A261]/10 border border-[#F4A261]/30 flex items-center justify-center mb-6 text-[#E76F51]">
             <span className="w-7 h-7">
               <CartIcon />
@@ -131,7 +131,7 @@ function OrderPage({ onBack, onNavigateMenu }) {
           </p>
         </div>
       ) : items.length === 0 ? (
-        <div className="flex flex-col items-center justify-center text-center py-24">
+        <div className="flex flex-col items-center justify-center text-center py-16 sm:py-24">
           <div className="w-16 h-16 rounded-full bg-[#2B2D42]/[0.04] border border-[#2B2D42]/10 flex items-center justify-center mb-6 text-[#E76F51]/60">
             <span className="w-7 h-7">
               <CartIcon />
@@ -145,59 +145,80 @@ function OrderPage({ onBack, onNavigateMenu }) {
           </p>
           <button
             onClick={onNavigateMenu}
-            className="px-8 py-3 bg-[#F4A261] hover:bg-[#E76F51] text-[#2B2D42] rounded-full text-sm font-semibold tracking-wide uppercase transition-all cursor-pointer"
+            className="px-8 py-3 bg-[#F4A261] hover:bg-[#E76F51] text-[#2B2D42] rounded-full text-sm font-semibold tracking-wide uppercase transition-all cursor-pointer shadow-sm hover:shadow-md"
           >
             Browse Menu
           </button>
         </div>
       ) : (
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-start max-w-5xl mx-auto">
-          <div ref={listRef} className="lg:col-span-2 space-y-3 sm:space-y-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12 items-start max-w-5xl mx-auto">
+          <div ref={listRef} className="min-w-0 lg:col-span-2 space-y-3 sm:space-y-4">
             {items.map((item) => (
               <div
                 key={item.id}
                 ref={(el) => (rowRefs.current[item.id] = el)}
-                className="flex items-center gap-3 sm:gap-4 rounded-xl border border-[#2B2D42]/10 bg-[#FFF3E6] p-3 sm:p-4 overflow-hidden"
+                className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#2B2D42]/10 bg-[#FFF3E6] p-3.5 sm:p-4 overflow-hidden shadow-sm"
               >
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  loading="lazy"
-                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg object-cover shrink-0"
-                />
-                <div className="flex-1 min-w-0">
-                  <h3 className="brand-font text-sm sm:text-base font-bold text-[#2B2D42] truncate">
-                    {item.name}
-                  </h3>
-                  <p className="text-[#E76F51] text-xs sm:text-sm font-semibold whitespace-nowrap">{item.price}</p>
-                </div>
-                <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-                  <div className="flex items-center border border-[#2B2D42]/10 rounded-lg overflow-hidden">
-                    <button
-                      onClick={() => cart.updateOrderQty(item.id, item.qty - 1)}
-                      className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-[#2B2D42]/60 hover:text-[#E76F51] transition-colors cursor-pointer"
-                      aria-label="Decrease quantity"
-                    >
-                      −
-                    </button>
-                    <span className="w-6 sm:w-8 text-center text-xs sm:text-sm font-semibold">
-                      {item.qty}
-                    </span>
-                    <button
-                      onClick={() => cart.updateOrderQty(item.id, item.qty + 1)}
-                      className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-[#2B2D42]/60 hover:text-[#E76F51] transition-colors cursor-pointer"
-                      aria-label="Increase quantity"
-                    >
-                      +
-                    </button>
+                {/* Item Details (Image + Name & Price + Remove button on mobile) */}
+                <div className="flex items-center gap-3 flex-1 min-w-0">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    loading="lazy"
+                    className="w-14 h-14 sm:w-20 sm:h-20 rounded-lg sm:rounded-xl object-cover shrink-0 border border-[#2B2D42]/5"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <h3 className="brand-font text-sm sm:text-base font-bold text-[#2B2D42] truncate">
+                      {item.name}
+                    </h3>
+                    <p className="text-[#E76F51] text-xs sm:text-sm font-semibold whitespace-nowrap mt-0.5 sm:mt-1">
+                      {item.price}
+                    </p>
                   </div>
+                  {/* Remove Button for mobile */}
                   <button
                     onClick={() => handleRemove(item.id)}
                     aria-label="Remove item"
-                    className="text-[#2B2D42]/40 hover:text-red-400 transition-colors cursor-pointer text-lg leading-none"
+                    className="sm:hidden w-8 h-8 flex items-center justify-center text-[#2B2D42]/40 hover:text-red-500 transition-colors cursor-pointer text-lg shrink-0"
                   >
                     ✕
                   </button>
+                </div>
+
+                {/* Controls (Quantity Stepper + Remove button for desktop) */}
+                <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#2B2D42]/10 sm:border-transparent">
+                  <span className="text-[11px] uppercase tracking-wider text-[#2B2D42]/50 font-semibold sm:hidden">
+                    Quantity
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center border border-[#2B2D42]/15 rounded-lg overflow-hidden bg-[#FFFDF9]">
+                      <button
+                        onClick={() => cart.updateOrderQty(item.id, item.qty - 1)}
+                        className="w-8 h-8 sm:w-8 sm:h-8 flex items-center justify-center text-[#2B2D42] hover:bg-[#F4A261]/20 hover:text-[#E76F51] transition-colors cursor-pointer text-base font-bold"
+                        aria-label="Decrease quantity"
+                      >
+                        −
+                      </button>
+                      <span className="w-8 sm:w-8 text-center text-xs sm:text-sm font-semibold text-[#2B2D42]">
+                        {item.qty}
+                      </span>
+                      <button
+                        onClick={() => cart.updateOrderQty(item.id, item.qty + 1)}
+                        className="w-8 h-8 sm:w-8 sm:h-8 flex items-center justify-center text-[#2B2D42] hover:bg-[#F4A261]/20 hover:text-[#E76F51] transition-colors cursor-pointer text-base font-bold"
+                        aria-label="Increase quantity"
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    <button
+                      onClick={() => handleRemove(item.id)}
+                      aria-label="Remove item"
+                      className="hidden sm:flex w-8 h-8 items-center justify-center text-[#2B2D42]/40 hover:text-red-500 transition-colors cursor-pointer text-lg leading-none"
+                    >
+                      ✕
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -205,12 +226,12 @@ function OrderPage({ onBack, onNavigateMenu }) {
 
           <div
             ref={summaryRef}
-            className="rounded-2xl border border-[#F4A261]/20 bg-gradient-to-b from-[#FFFDF9]/[0.04] to-transparent p-6 sticky top-28"
+            className="min-w-0 rounded-2xl border border-[#F4A261]/25 bg-[#FFF3E6]/60 backdrop-blur-sm p-5 sm:p-6 lg:sticky lg:top-28 shadow-sm"
           >
             <h3 className="brand-font text-lg font-bold text-[#2B2D42] mb-4">Order Summary</h3>
-            <div className="flex items-center justify-between text-sm text-[#2B2D42]/60 mb-2">
+            <div className="flex items-center justify-between text-sm text-[#2B2D42]/70 mb-2">
               <span>Subtotal</span>
-              <span>AED {subtotal.toFixed(2)}</span>
+              <span className="font-semibold text-[#2B2D42]">AED {subtotal.toFixed(2)}</span>
             </div>
             <div className="flex items-center justify-between text-sm text-[#2B2D42]/50 mb-4">
               <span>Taxes &amp; fees</span>
@@ -218,11 +239,11 @@ function OrderPage({ onBack, onNavigateMenu }) {
             </div>
             <div className="flex items-center justify-between text-base font-bold text-[#2B2D42] border-t border-[#2B2D42]/10 pt-4 mb-6">
               <span>Total</span>
-              <span className="text-[#E76F51]">AED {subtotal.toFixed(2)}</span>
+              <span className="text-[#E76F51] text-lg font-bold">AED {subtotal.toFixed(2)}</span>
             </div>
             <button
               onClick={handlePlaceOrder}
-              className="w-full py-3 bg-gradient-to-r from-[#E76F51] to-[#D95F41] hover:from-[#F4A261] hover:to-[#E76F51] text-[#FFFDF9] rounded-full font-semibold tracking-wide uppercase text-sm transition-all shadow-[0_0_20px_rgba(231,111,81,0.3)] hover:shadow-[0_0_30px_rgba(231,111,81,0.5)] cursor-pointer"
+              className="w-full py-3.5 bg-gradient-to-r from-[#E76F51] to-[#D95F41] hover:from-[#F4A261] hover:to-[#E76F51] text-[#FFFDF9] rounded-xl font-bold tracking-wider uppercase text-sm transition-all shadow-[0_4px_20px_rgba(231,111,81,0.35)] hover:shadow-[0_6px_24px_rgba(231,111,81,0.5)] cursor-pointer active:scale-[0.99]"
             >
               Place Order
             </button>

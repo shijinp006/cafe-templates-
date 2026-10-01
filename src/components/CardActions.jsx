@@ -64,13 +64,13 @@ function CardActions({ itemId, className = "" }) {
         onClick={handleWishlist}
         aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
         aria-pressed={wishlisted}
-        className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center backdrop-blur-sm border transition-all duration-300 cursor-pointer active:scale-90 ${
+        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center backdrop-blur-md border transition-all duration-300 cursor-pointer active:scale-90 ${
           wishlisted
-            ? "bg-[#F4A261] border-[#F4A261] text-[#2B2D42] scale-105"
-            : "bg-black/40 border-white/20 text-[#FFFDF9] hover:border-[#F8B583] hover:text-[#F8B583]"
+            ? "bg-[#F4A261] border-[#F4A261] text-[#2B2D42] scale-105 shadow-sm"
+            : "bg-black/50 border-white/30 text-[#FFFDF9] hover:border-[#F8B583] hover:text-[#F8B583]"
         }`}
       >
-        <span className="w-3.5 h-3.5 sm:w-4 sm:h-4">
+        <span className="w-4 h-4 sm:w-4 sm:h-4">
           <HeartIcon filled={wishlisted} />
         </span>
       </button>
@@ -78,13 +78,13 @@ function CardActions({ itemId, className = "" }) {
         type="button"
         onClick={handleAddOrder}
         aria-label="Add to order"
-        className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center backdrop-blur-sm border transition-all duration-300 cursor-pointer active:scale-90 ${
+        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center backdrop-blur-md border transition-all duration-300 cursor-pointer active:scale-90 ${
           justAdded
-            ? "bg-[#F4A261] border-[#F4A261] text-[#2B2D42] scale-110"
-            : "bg-black/40 border-white/20 text-[#FFFDF9] hover:border-[#F8B583] hover:text-[#F8B583]"
+            ? "bg-[#F4A261] border-[#F4A261] text-[#2B2D42] scale-110 shadow-sm"
+            : "bg-black/50 border-white/30 text-[#FFFDF9] hover:border-[#F8B583] hover:text-[#F8B583]"
         }`}
       >
-        <span className="w-3.5 h-3.5 sm:w-4 sm:h-4">
+        <span className="w-4 h-4 sm:w-4 sm:h-4">
           <CartIcon />
         </span>
       </button>

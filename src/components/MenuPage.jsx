@@ -46,18 +46,18 @@ function MenuPage({ onBack }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFDF9] text-[#2B2D42] pt-24 pb-20 px-4 md:px-6 lg:px-20">
+    <div className="min-h-screen bg-[#FFFDF9] text-[#2B2D42] pt-20 sm:pt-24 pb-24 sm:pb-20 px-4 md:px-6 lg:px-20">
       {/* Top Header & Navigation */}
-      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 mb-12 border-b border-[#2B2D42]/10 pb-8">
+      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 mb-8 md:mb-12 border-b border-[#2B2D42]/10 pb-6 md:pb-8">
         <div>
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 text-[#E76F51] hover:text-[#E76F51] text-xs uppercase tracking-widest font-semibold mb-3 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 text-[#E76F51] hover:text-[#E76F51] text-xs uppercase tracking-widest font-semibold mb-2 sm:mb-3 transition-colors cursor-pointer"
           >
             <span>← Back to Home</span>
           </button>
-          <div className="flex items-center gap-4">
-            <h1 className="brand-font text-3xl md:text-5xl font-bold text-[#2B2D42]">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <h1 className="brand-font text-3xl sm:text-4xl md:text-5xl font-bold text-[#2B2D42]">
               Full Craft Menu
             </h1>
             {isLoading && (
@@ -70,12 +70,12 @@ function MenuPage({ onBack }) {
       </div>
 
       {/* Category Tabs Filter */}
-      <div className="flex items-center justify-start md:justify-center gap-3 overflow-x-auto pb-4 mb-12 scrollbar-none">
+      <div className="flex items-center justify-start md:justify-center gap-2.5 sm:gap-3 overflow-x-auto pb-4 mb-8 sm:mb-12 scrollbar-none">
         {CATEGORIES.map((cat) => (
           <button
             key={cat.id}
             onClick={() => handleCategoryChange(cat.id)}
-            className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 whitespace-nowrap cursor-pointer ${activeCategory === cat.id
+            className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider uppercase transition-all duration-300 whitespace-nowrap cursor-pointer ${activeCategory === cat.id
                 ? "bg-[#E76F51] text-[#FFFDF9] shadow-[0_0_20px_rgba(231,111,81,0.4)]"
                 : "bg-[#2B2D42]/[0.04] text-[#2B2D42]/60 border border-[#2B2D42]/10 hover:border-[#F4A261]/40 hover:text-[#E76F51]"
               }`}
@@ -87,11 +87,11 @@ function MenuPage({ onBack }) {
 
       {/* Shimmer Skeleton Loader Grid during Loading */}
       {isLoading ? (
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6 mb-16">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-16">
           {Array.from({ length: 8 }).map((_, i) => (
             <div
               key={i}
-              className="relative h-[260px] sm:h-[420px] rounded-xl sm:rounded-2xl border border-[#2B2D42]/10 bg-[#FFF3E6] overflow-hidden flex flex-col justify-between shadow-lg shimmer-box"
+              className="relative h-[285px] sm:h-[420px] rounded-xl sm:rounded-2xl border border-[#2B2D42]/10 bg-[#FFF3E6] overflow-hidden flex flex-col justify-between shadow-lg shimmer-box"
             >
               {/* Top half image placeholder */}
               <div className="w-full h-1/2 bg-[#2B2D42]/[0.03] relative flex items-center justify-center">
@@ -118,12 +118,12 @@ function MenuPage({ onBack }) {
         </div>
       ) : (
         /* Product Cards Grid - Loaded Content */
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6 mb-16 transition-opacity duration-500">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-16 transition-opacity duration-500">
           {currentItems.map((item) => (
             <div
               key={item.id}
               onClick={() => window.innerWidth < 640 && setMobileActiveId((prev) => (prev === item.id ? null : item.id))}
-              className="relative h-[260px] sm:h-[420px] rounded-xl sm:rounded-2xl border border-[#2B2D42]/10 bg-[#FFF3E6] overflow-hidden group hover:border-[#F4A261]/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(244,162,97,0.15)] cursor-pointer"
+              className="relative h-[285px] sm:h-[420px] rounded-xl sm:rounded-2xl border border-[#2B2D42]/10 bg-[#FFF3E6] overflow-hidden group hover:border-[#F4A261]/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(244,162,97,0.15)] cursor-pointer shadow-sm"
             >
               <CardActions itemId={item.id} />
 

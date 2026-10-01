@@ -89,13 +89,13 @@ function Products({ onViewFullMenu }) {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
         {MENU_ITEMS.map((item, i) => (
           <div
             key={item.id}
             ref={(el) => (menuItemRefs.current[i] = el)}
             onClick={() => window.innerWidth < 640 && setMobileActiveId((prev) => (prev === item.id ? null : item.id))}
-            className="relative h-[260px] sm:h-[420px] rounded-xl sm:rounded-2xl border border-[#2B2D42]/10 bg-[#FFF3E6] overflow-hidden group hover:border-[#F4A261]/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(244,162,97,0.15)] cursor-pointer"
+            className="relative h-[285px] sm:h-[420px] rounded-xl sm:rounded-2xl border border-[#2B2D42]/10 bg-[#FFF3E6] overflow-hidden group hover:border-[#F4A261]/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(244,162,97,0.15)] cursor-pointer shadow-sm"
           >
             <CardActions itemId={item.id} />
 

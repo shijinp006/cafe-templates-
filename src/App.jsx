@@ -114,7 +114,11 @@ function App() {
           onNavigateWishlist={navigateToWishlist}
           onNavigateOrder={navigateToOrder}
         />
-        <MobileNav onNavigateSection={handleNavigateSection} />
+        <MobileNav
+          onNavigateSection={handleNavigateSection}
+          onNavigateWishlist={navigateToWishlist}
+          onNavigateOrder={navigateToOrder}
+        />
         {pageLoading && <PageLoader />}
         {currentView === "menu" ? (
           <Suspense fallback={PAGE_FALLBACK}>

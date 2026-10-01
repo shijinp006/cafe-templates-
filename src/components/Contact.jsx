@@ -19,8 +19,8 @@ const FIELDS = [
 ];
 
 const inputClass =
-  "w-full bg-white border border-[#2B2D42]/10 rounded-xl px-4 py-3 text-[#2B2D42] placeholder-[#2B2D42]/40 focus:outline-none focus:border-[#F4A261] focus:ring-2 focus:ring-[#F4A261]/20 transition";
-const labelClass = "block text-[11px] uppercase tracking-widest text-[#2B2D42]/60 mb-2";
+  "w-full bg-white border border-[#2B2D42]/10 rounded-xl px-3.5 py-3 text-[#2B2D42] text-base placeholder-[#2B2D42]/40 focus:outline-none focus:border-[#F4A261] focus:ring-2 focus:ring-[#F4A261]/20 transition";
+const labelClass = "block text-[11px] uppercase tracking-widest text-[#2B2D42]/60 mb-1.5 font-semibold";
 
 function Contact() {
   const sectionRef = useRef(null);
@@ -80,25 +80,25 @@ function Contact() {
         className="relative max-w-5xl mx-auto grid lg:grid-cols-5 rounded-3xl overflow-hidden border border-[#2B2D42]/10 bg-[#2B2D42]/[0.03] backdrop-blur-sm shadow-[0_30px_80px_rgba(43,45,66,0.15)]"
       >
         {/* Info panel */}
-        <aside className="lg:col-span-2 p-8 md:p-10 bg-gradient-to-br from-[#E76F51]/20 via-[#7A3B2A]/10 to-transparent border-b lg:border-b-0 lg:border-r border-[#2B2D42]/10 flex flex-col gap-8">
+        <aside className="lg:col-span-2 p-5 sm:p-8 md:p-10 bg-gradient-to-br from-[#E76F51]/20 via-[#7A3B2A]/10 to-transparent border-b lg:border-b-0 lg:border-r border-[#2B2D42]/10 flex flex-col gap-6 sm:gap-8">
           <div>
-            <h3 className="brand-font text-xl text-[#2B2D42] mb-2">Visit EMBER</h3>
+            <h3 className="brand-font text-xl text-[#2B2D42] mb-2 font-bold">Visit EMBER</h3>
             <p className="text-[#2B2D42]/60 text-sm leading-relaxed">
               Fire-grilled burgers, served hot. Book ahead for groups or ask us about catering.
             </p>
           </div>
 
-          <ul className="space-y-6 text-sm">
+          <ul className="space-y-4 sm:space-y-6 text-sm">
             {INFO_ROWS.map((row) => (
-              <li key={row.label} className="flex items-start gap-4">
-                <span className="shrink-0 w-10 h-10 rounded-full bg-[#F4A261]/10 border border-[#F4A261]/30 flex items-center justify-center text-[#E76F51]">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+              <li key={row.label} className="flex items-start gap-3 sm:gap-4">
+                <span className="shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#F4A261]/10 border border-[#F4A261]/30 flex items-center justify-center text-[#E76F51]">
+                  <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                     <path d={row.icon} />
                   </svg>
                 </span>
                 <div>
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-[#E76F51]/80 mb-1">{row.label}</p>
-                  <p className="text-[#2B2D42]/80">{row.value}</p>
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-[#E76F51]/80 mb-0.5 sm:mb-1 font-semibold">{row.label}</p>
+                  <p className="text-[#2B2D42]/80 text-xs sm:text-sm">{row.value}</p>
                 </div>
               </li>
             ))}
@@ -106,7 +106,7 @@ function Contact() {
         </aside>
 
         {/* Form panel */}
-        <div className="lg:col-span-3 p-8 md:p-10">
+        <div className="lg:col-span-3 p-5 sm:p-8 md:p-10">
           {submitted ? (
             <div ref={resultRef} className="h-full min-h-[320px] flex flex-col items-center justify-center text-center">
               <div className="w-16 h-16 rounded-full bg-[#F4A261]/10 border border-[#F4A261]/40 flex items-center justify-center text-[#E76F51] mb-5">

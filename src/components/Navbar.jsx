@@ -72,10 +72,10 @@ function Navbar({ onNavigateSection, onNavigateWishlist, onNavigateOrder }) {
 
   return (
     <>
-      <header className={`nav-drop fixed top-0 w-full z-50 px-4 md:px-6 lg:px-20 py-5 flex justify-between items-center transition-colors duration-300 ${
+      <header className={`nav-drop fixed top-0 w-full z-50 px-4 md:px-6 lg:px-20 py-3.5 sm:py-5 flex justify-between items-center transition-colors duration-300 ${
         overHero
-          ? "bg-transparent"
-          : "bg-gradient-to-r from-[#FFF3E6] via-[#FFE9EC] to-[#FFF3E6]"
+          ? "bg-black/30 backdrop-blur-sm sm:bg-transparent sm:backdrop-blur-none"
+          : "bg-[#FFF3E6]/95 backdrop-blur-md shadow-sm"
       }`}>
         <a
           href="#hero"
@@ -100,15 +100,17 @@ function Navbar({ onNavigateSection, onNavigateWishlist, onNavigateOrder }) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3 sm:gap-5">
+        <div className="flex items-center gap-2 sm:gap-4">
           <button
             type="button"
             onClick={handleWishlist}
             aria-label="View wishlist"
             style={{ animationDelay: "0.7s" }}
-            className={`nav-item relative w-6 h-6 sm:w-5 sm:h-5 hover:text-[#E76F51] hover:scale-110 transition-all cursor-pointer ${overHero ? "text-[#FFFDF9]/80" : "text-[#2B2D42]/80"}`}
+            className={`nav-item relative w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center rounded-full hover:bg-black/10 transition-all cursor-pointer ${overHero ? "text-[#FFFDF9]/90" : "text-[#2B2D42]/90"}`}
           >
-            <HeartIcon />
+            <span className="w-5 h-5">
+              <HeartIcon />
+            </span>
             <CountBadge count={cart?.wishlistCount} />
           </button>
           <button
@@ -116,12 +118,13 @@ function Navbar({ onNavigateSection, onNavigateWishlist, onNavigateOrder }) {
             onClick={handleOrder}
             aria-label="View order"
             style={{ animationDelay: "0.8s" }}
-            className={`nav-item relative w-6 h-6 sm:w-5 sm:h-5 hover:text-[#E76F51] hover:scale-110 transition-all cursor-pointer ${overHero ? "text-[#FFFDF9]/80" : "text-[#2B2D42]/80"}`}
+            className={`nav-item relative w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center rounded-full hover:bg-black/10 transition-all cursor-pointer ${overHero ? "text-[#FFFDF9]/90" : "text-[#2B2D42]/90"}`}
           >
-            <CartIcon />
+            <span className="w-5 h-5">
+              <CartIcon />
+            </span>
             <CountBadge count={cart?.orderCount} />
           </button>
-
         </div>
       </header>
 

@@ -49,7 +49,7 @@ function Hero() {
     }
 
     const isMobile = window.innerWidth < 640;
-    const scaleFactor = isMobile ? 1.4 : BURGER_SCALE;
+    const scaleFactor = isMobile ? 1.2 : BURGER_SCALE;
     const drawW = baseW * scaleFactor;
     const drawH = baseH * scaleFactor;
     const offsetX = (canvasW - drawW) / 2;
@@ -170,19 +170,19 @@ function Hero() {
         >
           <div
             ref={heroTextRef}
-            className="absolute z-20 left-4 right-4 top-[58%] sm:left-6 sm:right-auto lg:left-20 sm:top-1/2 sm:-translate-y-1/2 max-w-none sm:max-w-md"
+            className="absolute z-20 left-5 right-5 top-[52%] xs:top-[56%] sm:left-6 sm:right-auto lg:left-20 sm:top-1/2 sm:-translate-y-1/2 max-w-none sm:max-w-md"
           >
-            <h1 className="brand-font text-5xl md:text-8xl font-bold text-[#FFFDF9] leading-tight mb-6 whitespace-nowrap">
+            <h1 className="brand-font text-4xl xs:text-5xl sm:text-7xl md:text-8xl font-bold text-[#FFFDF9] leading-[1.1] mb-3 sm:mb-6">
               Crafted In
               <br />
               Layers
             </h1>
-            <p className="text-[#FFFDF9]/60 text-base md:text-lg max-w-sm mb-10">
+            <p className="text-[#FFFDF9]/70 text-sm sm:text-base md:text-lg max-w-sm mb-6 sm:mb-10 leading-relaxed">
               Watch our signature burger come apart, ingredient by
               ingredient — each one flame-grilled and stacked with
               intention.
             </p>
-            <div className="hidden sm:flex items-center gap-2 text-[#FFFDF9]/50 text-xs uppercase tracking-widest">
+            <div className="flex items-center gap-2 text-[#FFFDF9]/60 text-[11px] sm:text-xs uppercase tracking-widest font-medium">
               <span>Scroll to explore</span>
               <span className="inline-block animate-bounce">↓</span>
             </div>
