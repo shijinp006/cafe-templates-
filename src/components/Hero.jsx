@@ -84,6 +84,10 @@ function Hero() {
 
     resizeCanvas();
 
+    // Always start the intro from the top, on the assembled burger frame.
+    if ("scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+
     const handleResize = () => {
       resizeCanvas();
       drawFrame(lastDrawnIndex.current);
@@ -102,7 +106,7 @@ function Hero() {
         if (cancelled) return;
         const pct = Math.round((loadedCount / FRAME_COUNT) * 100);
         setPercent(pct);
-        if (loadedCount === 1) drawFrame(0);
+        if (i === 0) drawFrame(0);
         if (loadedCount === FRAME_COUNT) setLoaded(true);
       };
       img.onload = onOne;
@@ -122,6 +126,7 @@ function Hero() {
 
     const ctxGsap = gsap.context(() => {
       const scrub = { frame: 0 };
+      drawFrame(0);
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -145,6 +150,8 @@ function Hero() {
         0
       );
     });
+
+    ScrollTrigger.refresh();
 
     return () => ctxGsap.revert();
   }, [loaded]);
