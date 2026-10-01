@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ALL_MENU_ITEMS } from "../data/menuItems";
 import CardActions from "./CardActions";
+import ExpandableText from "./ExpandableText";
 import { useLenis } from "../lib/LenisContext";
 import FoodDoodles from "./FoodDoodles";
 
@@ -19,6 +20,7 @@ function MenuPage({ onBack }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [mobileActiveId, setMobileActiveId] = useState(null);
+  const [expandedId, setExpandedId] = useState(null);
 
   // Trigger loading & shimmer effect when page opens, or when category/page changes
   useEffect(() => {
@@ -174,7 +176,7 @@ function MenuPage({ onBack }) {
 
               {/* Bottom Panel: Details text panel shown on mobile tap or desktop hover */}
               <div
-                className={`absolute bottom-0 inset-x-0 h-1/2 bg-[#FFF3E6] p-3 sm:p-6 flex flex-col justify-between border-t border-[#F4A261]/20 transform transition-all duration-500 ease-out z-20 ${mobileActiveId === item.id ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+                className={`absolute bottom-0 inset-x-0 h-auto min-h-[50%] max-h-[85%] overflow-y-auto sm:h-1/2 sm:min-h-0 sm:max-h-none sm:overflow-visible bg-[#FFF3E6] p-3 sm:p-6 flex flex-col ${expandedId === item.id ? "justify-start gap-2" : "justify-between"} sm:justify-between border-t border-[#F4A261]/20 transform transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] z-20 ${mobileActiveId === item.id ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
                   } sm:translate-y-full sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100`}
               >
                 <div className="flex items-baseline justify-between gap-1.5">
@@ -196,9 +198,21 @@ function MenuPage({ onBack }) {
                   <p className="text-[#E76F51] text-[9px] sm:text-[10px] uppercase tracking-widest mb-0.5 sm:mb-1 font-semibold">
                     Details
                   </p>
-                  <p className="text-[#2B2D42]/80 text-[10px] sm:text-xs md:text-sm leading-tight sm:leading-relaxed line-clamp-2 sm:line-clamp-none">
-                    {item.description}
-                  </p>
+                  <ExpandableText
+                    text={item.description}
+                    expanded={expandedId === item.id}
+                    className="text-[#2B2D42]/80 text-[10px] sm:text-xs md:text-sm leading-tight sm:leading-relaxed"
+                  />
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setExpandedId((prev) => (prev === item.id ? null : item.id));
+                    }}
+                    className="sm:hidden mt-1 text-[10px] font-semibold uppercase tracking-wider text-[#E76F51] cursor-pointer"
+                  >
+                    {expandedId === item.id ? "See less" : "See more"}
+                  </button>
                 </div>
               </div>
             </div>
