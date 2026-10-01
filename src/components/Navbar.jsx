@@ -94,7 +94,7 @@ function Navbar({ onNavigateSection, onNavigateWishlist, onNavigateOrder }) {
               href={`#${link.id}`}
               onClick={handleNav(link.id)}
               style={{ animationDelay: `${0.3 + i * 0.1}s` }}
-              className="nav-item nav-link hover:text-[#E76F51] transition-colors cursor-pointer"
+              className="nav-item nav-link font-semibold hover:text-[#E76F51] transition-colors cursor-pointer"
             >
               {link.label}
             </a>
